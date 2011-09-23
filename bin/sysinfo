@@ -1,0 +1,32 @@
+#!/usr/bin/python
+
+import os
+import sys
+import optparse
+import subprocess
+
+def parse_args():
+    p = optparse.OptionParser()
+
+    p.add_option('--moduledir', '-M',
+            default='/usr/libexec/sysinfo/modules')
+
+    return p.parse_args()
+
+def main():
+    opts, args = parse_args()
+
+    for module in sorted(os.listdir(opts.moduledir)):
+        if module.startswith('.'):
+            continue
+
+        name = os.path.splitext(module)[0]
+        try:
+            subprocess.call([os.path.join(opts.moduledir, module)])
+        except Exception, detail:
+            print 'sysinfo', 'module', name, 'run-status', 'failed'
+            print >>sys.stderr, 'ERROR:', detail
+
+if __name__ == '__main__':
+    main()
+

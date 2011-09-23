@@ -1,0 +1,16 @@
+things to collect
+
+disk <name> <size>
+dmi <keyword> <value>
+filesystem <type> <device> <path> <size>
+group <name> <gid>
+kernel <version>
+lastboot <date>
+memory <size>
+nic <name> <mac> <addr> [<addr> ...]
+node <name>
+package <name> <version>
+swap <device> <size>
+uname <keyword> <value>
+user <name> <uid> <gid>
+
